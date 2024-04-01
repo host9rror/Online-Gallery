@@ -1,0 +1,111 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+input,
+button {
+  height: 40px;
+  box-sizing: border-box;
+}
+
+input {
+  width: calc(272px - 16px);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+input:hover {
+  outline: none;
+  border-color: rgb(0, 0, 0);
+}
+
+input:focus {
+  outline: none;
+  border-color: rgb(78, 117, 255);
+}
+
+button {
+  padding: 0 16px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(78, 117, 255);
+}
+
+button:hover {
+  background-color: rgb(108, 140, 255);
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 20px auto;
+  display: none;
+}
+
+.loader.loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+img {
+  height: 200px;
+  width: 360px;
+  object-fit: cover;
+  display: block;
+}
+.gallery {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  display: flex;
+}
+
+.gallery-item {
+  width: 100%;
+  max-width: 360px;
+}
+.gallery-description {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 1px 6px #2e2f4214, 0 1px 1px #2e2f4229, 0 2px 1px #2e2f4214;
+}
+.gallery-desc-item {
+  text-align: center;
+}
+.gallery-link {
+  text-decoration: none;
+}
+.gallery-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 360px;
+}
