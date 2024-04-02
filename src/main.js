@@ -1,7 +1,7 @@
 import iziToast from "izitoast";
 import 'izitoast/dist/css/iziToast.min.css';
 
-import { imageSearch } from "./js/pixabay-api";
+import { imageSearch, requestForImgs } from "./js/pixabay-api";
 import { renderImages } from "./js/render-functions";
 
 const searchForm = document.querySelector('#search-form');
@@ -28,7 +28,8 @@ searchForm.addEventListener('submit', event => {
                   message: "Sorry, there are no images matching your search query. Please try again!",
                 });
             } else {
-                renderImages(data.hits, galleryImages);
+                renderImages(data.hits, galleryImages); 
+                toggleMoreButton(data.hits);
             }
           })
           .catch(error => {
@@ -40,3 +41,12 @@ searchForm.addEventListener('submit', event => {
     } 
     event.target.reset();
 });
+
+moreButton.addEventListener('click', (event) => {
+  requestForImgs(event); 
+});
+
+
+function toggleMoreButton(data) {
+    moreButton.classList.toggle('is-hidden', data.length === 0);
+}
