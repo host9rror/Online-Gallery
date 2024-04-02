@@ -26,7 +26,7 @@ export async function imageSearch(value) {
 
     const data = response.data;
     if (data.totalHits === 0) {
-      return { hits: [] }; // Возвращаем пустой массив, если изображений нет
+      return { hits: [] }; 
     }
 
     return data;
