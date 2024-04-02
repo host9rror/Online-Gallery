@@ -36,7 +36,6 @@ export async function imageSearch(value) {
 }
 
 export async function requestForImgs() {
-  // Получаем значение searchWord из поля ввода поиска
   searchWord = document.querySelector('#search-input').value.trim();
 
   try {
