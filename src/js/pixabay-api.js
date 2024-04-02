@@ -1,36 +1,37 @@
+import axios from "axios";
+
+let page = 1;
+let searchWord;
+
 export async function imageSearch(value) {
   const API = '43068097-aa3ed59823608d0655ab40c7d';
   const defaultURL = "https://pixabay.com/api/";
-
-  const options = {
-    method: 'GET',
-  };
 
   const params = new URLSearchParams({
     key: API,
     q: value,
     image_type: 'photo',
     orientation: 'horizontal',
-    safesearch: true
+    safesearch: true,
+    page: page,
+    per_page: 15
   });
 
-  const URL = `${defaultURL}?${params.toString()}`;
+  try {
+    const response = await axios.get(defaultURL, { params });
 
+    if (response.status !== 200) {
+      throw new Error("Error");
+    }
 
-  return fetch(URL, options)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Error");
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.totalHits === 0) {
-        return null;
-      }
-      return data;
-    })
-    .catch(error => {
-      return error;
-    });
+    const data = response.data;
+    if (data.totalHits === 0) {
+      return { hits: [] }; // Возвращаем пустой массив, если изображений нет
+    }
+
+    return data;
+  } catch (error) {
+    return error;
+  }
 }
+

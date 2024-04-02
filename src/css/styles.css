@@ -109,3 +109,15 @@ img {
   height: auto;
   width: 360px;
 }
+
+.moreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* .is-hidden {
+  display: none;
+} */

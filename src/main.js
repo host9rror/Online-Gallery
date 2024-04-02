@@ -7,6 +7,7 @@ import { renderImages } from "./js/render-functions";
 const searchForm = document.querySelector('#search-form');
 const galleryImages = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+const moreButton = document.querySelector('.more-btn');
 
 searchForm.addEventListener('submit', event => {
     event.preventDefault();

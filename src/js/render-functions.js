@@ -28,11 +28,13 @@ export function renderImages(data, galleryImages) {
     .join('');
 
   if (galleryImages) { 
-    galleryImages.innerHTML = galleryMarkup;
+    galleryImages.innerHTML += galleryMarkup; 
     const lightbox = new SimpleLightbox('.gallery-item a', {
       captionsData: 'alt',
       captionDelay: 250
     });
+
+    moreButton.classList.toggle('is-hidden', data.length === 0);
   } else {
     console.error(Error);
   }
