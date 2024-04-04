@@ -1,9 +1,6 @@
 import axios from "axios";
 
-let page = 1;
-let searchWord;
-
-export async function imageSearch(value) {
+export async function imageSearch(value, page = 1) {
   const API = '43068097-aa3ed59823608d0655ab40c7d';
   const defaultURL = "https://pixabay.com/api/";
 
@@ -14,7 +11,7 @@ export async function imageSearch(value) {
     orientation: 'horizontal',
     safesearch: true,
     page: page,
-    per_page: 15
+    per_page: 15,
   });
 
   try {
@@ -29,17 +26,6 @@ export async function imageSearch(value) {
       return null;
     }
 
-    return data;
-  } catch (error) {
-    return error;
-  }
-}
-
-export async function requestForImgs() {
-  searchWord = document.querySelector('#search-input').value.trim();
-
-  try {
-    const data = await imageSearch(searchWord);
     return data;
   } catch (error) {
     return error;

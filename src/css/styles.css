@@ -110,14 +110,13 @@ img {
   width: 360px;
 }
 
-.moreBtn {
+.more-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  margin: 0 auto;
   margin-top: 20px;
 }
-
-/* .is-hidden {
+.is-hidden {
   display: none;
-} */
+}
