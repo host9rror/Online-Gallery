@@ -29,6 +29,7 @@ searchForm.addEventListener('submit', async (event) => {
                     icon: '',
                     message: "Sorry, there are no images matching your search query. Please try again!",
                 });
+                moreButton.classList.add('is-hidden');
             } else {
                 allImages = data.hits; 
                 renderImages(allImages, galleryImages);

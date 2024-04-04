@@ -59,6 +59,7 @@ button:hover {
 }
 
 .loader.loading {
+  display: block;
   animation: spin 1s linear infinite;
 }
 
