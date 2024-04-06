@@ -12,10 +12,13 @@ let currentQuery = '';
 let allImages = []; 
 
 function showLoader() {
-    loader = document.createElement('div');
-    loader.classList.add('loader', 'loading');
-    document.body.appendChild(loader);
-    moreButton.classList.add('is-hidden');
+    if (!loader) {
+        loader = document.createElement('div');
+        loader.classList.add('loader', 'loading');
+        document.body.appendChild(loader);
+    } else {
+        loader.classList.add('loading');
+    }
 }
 
 function hideLoader() {
