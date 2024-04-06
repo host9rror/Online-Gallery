@@ -5,11 +5,25 @@ import { renderImages } from "./js/render-functions";
 
 const searchForm = document.querySelector('#search-form');
 const galleryImages = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
+let loader = null;
 const moreButton = document.querySelector('.more-btn');
 let currentPage = 1;
 let currentQuery = '';
 let allImages = []; 
+
+function showLoader() {
+    loader = document.createElement('div');
+    loader.classList.add('loader', 'loading');
+    document.body.appendChild(loader);
+    moreButton.classList.add('is-hidden');
+}
+
+function hideLoader() {
+    if (loader) {
+        loader.remove();
+        loader = null;
+    }
+}
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -18,8 +32,7 @@ searchForm.addEventListener('submit', async (event) => {
     const query = event.target.querySelector('#search-input').value.trim();
 
     if (query) {
-        loader.classList.add('loading');
-
+        showLoader();
         try {
             const data = await imageSearch(query);
             if (data === null) {
@@ -40,7 +53,7 @@ searchForm.addEventListener('submit', async (event) => {
         } catch (error) {
             console.error(error);
         } finally {
-            loader.classList.remove('loading');
+            hideLoader();
         }
     } 
     event.target.reset();
@@ -48,8 +61,7 @@ searchForm.addEventListener('submit', async (event) => {
 
 
 moreButton.addEventListener('click', async (event) => {
-    loader.classList.add('loading');
-
+    showLoader();
     try {
         const nextPageData = await imageSearch(currentQuery, currentPage + 1);
         if (nextPageData === null || nextPageData.hits.length === 0) {
@@ -77,7 +89,7 @@ moreButton.addEventListener('click', async (event) => {
     } catch (error) {
         console.error(error);
     } finally {
-        loader.classList.remove('loading');
+        hideLoader();
     }
 });
 
